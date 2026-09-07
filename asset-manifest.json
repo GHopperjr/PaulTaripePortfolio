@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/PaulTaripePortfolio/static/css/main.80d5a297.css",
+    "main.js": "/PaulTaripePortfolio/static/js/main.c08bfcb4.js",
+    "static/js/453.e761cbd5.chunk.js": "/PaulTaripePortfolio/static/js/453.e761cbd5.chunk.js",
+    "static/media/bg-light.png": "/PaulTaripePortfolio/static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/bg-dark.png": "/PaulTaripePortfolio/static/media/bg-dark.f420c6b8458af72de935.png",
+    "static/media/Hikecaviteimg.png": "/PaulTaripePortfolio/static/media/Hikecaviteimg.214e9edacddd2f9aec1d.png",
+    "static/media/JobApplicationTrackerimg.png": "/PaulTaripePortfolio/static/media/JobApplicationTrackerimg.fbc9ac86ae25b60dcf43.png",
+    "static/media/ProjectAllocationimg.png": "/PaulTaripePortfolio/static/media/ProjectAllocationimg.80c50f1292ac7eef9451.png",
+    "static/media/GBCCLoggingSystemimg.png": "/PaulTaripePortfolio/static/media/GBCCLoggingSystemimg.b4f24dd31ab65981fcf4.png",
+    "static/media/Pulseimg.png": "/PaulTaripePortfolio/static/media/Pulseimg.76f9869a01e1e3c95ad4.png",
+    "static/media/1x1.jpg": "/PaulTaripePortfolio/static/media/1x1.dea89f6af183b8fa21ae.jpg",
+    "index.html": "/PaulTaripePortfolio/index.html",
+    "main.80d5a297.css.map": "/PaulTaripePortfolio/static/css/main.80d5a297.css.map",
+    "main.c08bfcb4.js.map": "/PaulTaripePortfolio/static/js/main.c08bfcb4.js.map",
+    "453.e761cbd5.chunk.js.map": "/PaulTaripePortfolio/static/js/453.e761cbd5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80d5a297.css",
+    "static/js/main.c08bfcb4.js"
+  ]
+}
