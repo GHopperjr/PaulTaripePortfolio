@@ -1,6 +1,8 @@
 .vertical-timeline span {
     color: white;
-    font-family: 'Courier Prime', monospace;
+    font-family: 'IBM Plex Mono', Consolas, monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.01em;
 }
 
 .vertical-timeline p {
@@ -15,8 +17,17 @@
     color: rgb(39, 40, 34);
 }
 
+// Org name steps down to the body face so it reads as support, not a second title.
 .vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
+    color: rgba(39, 40, 34, 0.78);
+    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.vertical-timeline-element h3 {
+    margin-bottom: 0;
 }
 
 .vertical-timeline-element span {

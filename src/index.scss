@@ -1,15 +1,20 @@
+// Type system: Sora carries the headings, IBM Plex Sans the reading text,
+// IBM Plex Mono the technical labels (chips, timeline dates).
+$font-display: 'Sora', 'Segoe UI', sans-serif;
+$font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+$font-mono: 'IBM Plex Mono', Consolas, monospace;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: $font-body;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.1rem !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
+  font-family: $font-mono !important;
   font-size: 1rem !important;
 }
 
@@ -30,7 +35,33 @@ a:hover {
 
 p, a, h1, h2, h3, h4, h5, label, button {
   color: white;
-  font-family: "Lato", sans-serif;
+}
+
+p, a, label, button, li, span {
+  font-family: $font-body;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-display;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+}
+
+// Section headings (Expertise / Career History / Projects / Contact Me)
+h1 {
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4em;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.15rem;
 }
 
 .navigation-bar {
@@ -39,7 +70,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   button {
     font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
+    font-family: $font-body;
     text-transform: initial;
     padding: 6px 10px;
   }
@@ -52,7 +83,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 .navigation-bar-responsive {
   span, p {
     color: #0d1116;
-    font-family: "Lato", sans-serif;
+    font-family: $font-body;
   }
 }
 
@@ -121,7 +152,8 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   .chip {
-    background-color: rgba(0, 0, 0, 0.08);
+    // !important to beat the equally-!important white default in Expertise.scss.
+    background-color: rgba(0, 0, 0, 0.08) !important;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 

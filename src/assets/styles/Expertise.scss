@@ -11,7 +11,7 @@
   
 .skills-container .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 50px;
 }
   
@@ -22,12 +22,13 @@
   
 .chip {
     color: rgb(39, 40, 34) !important;
+    // !important is required to beat MUI's own filled-Chip background.
     background-color: white !important;
     font-size: 0.8rem !important;
     height: 25px !important;
   
     span {
-        font-family: 'Courier Prime', monospace;
+        font-family: 'IBM Plex Mono', Consolas, monospace;
         color: rgb(39, 40, 34);
     }
   
@@ -52,8 +53,7 @@
 
 .flex-chips .MuiChip-outlined {
     background-color: #e0e0e0;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-family: 'IBM Plex Mono', Consolas, monospace;
 }
 
 .flex-chips .MuiChip-outlined span {

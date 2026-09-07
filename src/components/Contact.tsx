@@ -3,6 +3,10 @@ import '../assets/styles/Contact.scss';
 // import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import InputAdornment from '@mui/material/InputAdornment';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
@@ -65,7 +69,8 @@ function Contact() {
             <div className='form-flex'>
               <TextField
                 required
-                id="outlined-required"
+                variant="filled"
+                id="contact-name"
                 label="Your Name"
                 placeholder="What's your name?"
                 value={name}
@@ -74,10 +79,19 @@ function Contact() {
                 }}
                 error={nameError}
                 helperText={nameError ? "Please enter your name" : ""}
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PersonOutlineIcon />
+                    </InputAdornment>
+                  ),
+                }}
               />
               <TextField
                 required
-                id="outlined-required"
+                variant="filled"
+                id="contact-email"
                 label="Email / Phone"
                 placeholder="How can I reach you?"
                 value={email}
@@ -86,11 +100,20 @@ function Contact() {
                 }}
                 error={emailError}
                 helperText={emailError ? "Please enter your email or phone number" : ""}
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MailOutlineIcon />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             <TextField
               required
-              id="outlined-multiline-static"
+              variant="filled"
+              id="contact-message"
               label="Message"
               placeholder="Send me any inquiries or questions"
               multiline
@@ -102,10 +125,20 @@ function Contact() {
               }}
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
+              InputProps={{
+                disableUnderline: true,
+                startAdornment: (
+                  <InputAdornment position="start" className="textarea-adornment">
+                    <ChatBubbleOutlineIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
-              Send
-            </Button>
+            <div className="form-actions">
+              <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
+                Send
+              </Button>
+            </div>
           </Box>
         </div>
       </div>

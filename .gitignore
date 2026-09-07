@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# personal/sensitive — contains referee phone numbers, kept local only
+src/assets/images/Infos.txt
+src/assets/images/*.pdf
