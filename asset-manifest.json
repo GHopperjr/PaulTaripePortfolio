@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PaulTaripePortfolio/static/css/main.80d5a297.css",
-    "main.js": "/PaulTaripePortfolio/static/js/main.c08bfcb4.js",
+    "main.css": "/PaulTaripePortfolio/static/css/main.00386de1.css",
+    "main.js": "/PaulTaripePortfolio/static/js/main.9b5db1b3.js",
     "static/js/453.e761cbd5.chunk.js": "/PaulTaripePortfolio/static/js/453.e761cbd5.chunk.js",
     "static/media/bg-light.png": "/PaulTaripePortfolio/static/media/bg-light.bac0efb485244a522981.png",
     "static/media/bg-dark.png": "/PaulTaripePortfolio/static/media/bg-dark.f420c6b8458af72de935.png",
@@ -12,12 +12,12 @@
     "static/media/Pulseimg.png": "/PaulTaripePortfolio/static/media/Pulseimg.76f9869a01e1e3c95ad4.png",
     "static/media/1x1.jpg": "/PaulTaripePortfolio/static/media/1x1.dea89f6af183b8fa21ae.jpg",
     "index.html": "/PaulTaripePortfolio/index.html",
-    "main.80d5a297.css.map": "/PaulTaripePortfolio/static/css/main.80d5a297.css.map",
-    "main.c08bfcb4.js.map": "/PaulTaripePortfolio/static/js/main.c08bfcb4.js.map",
+    "main.00386de1.css.map": "/PaulTaripePortfolio/static/css/main.00386de1.css.map",
+    "main.9b5db1b3.js.map": "/PaulTaripePortfolio/static/js/main.9b5db1b3.js.map",
     "453.e761cbd5.chunk.js.map": "/PaulTaripePortfolio/static/js/453.e761cbd5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.80d5a297.css",
-    "static/js/main.c08bfcb4.js"
+    "static/css/main.00386de1.css",
+    "static/js/main.9b5db1b3.js"
   ]
 }
