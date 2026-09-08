@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
 import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
@@ -16,7 +16,17 @@ const EMAILJS_SERVICE_ID = 'service_pirlb0s';
 const EMAILJS_TEMPLATE_ID = 'template_e6r727n';
 const EMAILJS_PUBLIC_KEY = 'O_omsYZ_z-EnQIGGV';
 
+// Throttles repeat submissions from the same browser after a send.
+const COOLDOWN_SECONDS = 60;
+const LAST_SENT_STORAGE_KEY = 'portfolio_contact_last_sent';
+
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
+
+const getCooldownSecondsRemaining = (): number => {
+  const lastSent = Number(localStorage.getItem(LAST_SENT_STORAGE_KEY) ?? 0);
+  const elapsedSeconds = (Date.now() - lastSent) / 1000;
+  return Math.max(0, Math.ceil(COOLDOWN_SECONDS - elapsedSeconds));
+};
 
 function Contact() {
 
@@ -29,11 +39,46 @@ function Contact() {
   const [messageError, setMessageError] = useState<boolean>(false);
 
   const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [honeypot, setHoneypot] = useState<string>('');
+  const [cooldown, setCooldown] = useState<number>(0);
 
   const form = useRef();
 
+  // Ticks the cooldown down once a second; picks up an in-progress cooldown
+  // from a previous visit too, since it's tracked by wall-clock time.
+  useEffect(() => {
+    setCooldown(getCooldownSecondsRemaining());
+
+    const timer = setInterval(() => {
+      setCooldown(getCooldownSecondsRemaining());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const startCooldown = () => {
+    localStorage.setItem(LAST_SENT_STORAGE_KEY, String(Date.now()));
+    setCooldown(COOLDOWN_SECONDS);
+  };
+
   const sendEmail = (e: any) => {
     e.preventDefault();
+
+    if (cooldown > 0 || status === 'sending') {
+      return;
+    }
+
+    // Honeypot: a real visitor never sees or fills this field, so anything in
+    // it marks the submission as automated. Pretend it succeeded so a bot
+    // gets no signal to adapt around, but skip the actual EmailJS call.
+    if (honeypot !== '') {
+      startCooldown();
+      setStatus('success');
+      setName('');
+      setEmail('');
+      setMessage('');
+      return;
+    }
 
     const hasNameError = name === '';
     const hasEmailError = email === '';
@@ -57,6 +102,7 @@ function Contact() {
         setName('');
         setEmail('');
         setMessage('');
+        startCooldown();
       },
       () => {
         setStatus('error');
@@ -77,6 +123,19 @@ function Contact() {
             autoComplete="off"
             className='contact-form'
           >
+            {/* Honeypot: hidden from real visitors, so anything filling it in is automated. */}
+            <div className="honeypot-field" aria-hidden="true">
+              <label htmlFor="contact-company">Company</label>
+              <input
+                type="text"
+                id="contact-company"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
             <div className='form-flex'>
               <TextField
                 required
@@ -156,13 +215,18 @@ function Contact() {
                   <ErrorOutlineIcon/> Something went wrong. Please email me directly at paultrpe@gmail.com instead.
                 </p>
               )}
+              {status !== 'success' && status !== 'error' && cooldown > 0 && (
+                <p className="form-status form-status--info">
+                  You can send another message in {cooldown}s.
+                </p>
+              )}
               <Button
                 variant="contained"
                 endIcon={<SendIcon />}
                 onClick={sendEmail}
-                disabled={status === 'sending'}
+                disabled={status === 'sending' || cooldown > 0}
               >
-                {status === 'sending' ? 'Sending…' : 'Send'}
+                {status === 'sending' ? 'Sending…' : cooldown > 0 ? `Wait ${cooldown}s` : 'Send'}
               </Button>
             </div>
           </Box>

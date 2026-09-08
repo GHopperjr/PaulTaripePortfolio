@@ -4,6 +4,16 @@
   margin-right: 5px;
 }
 
+// Off-screen rather than display:none/visibility:hidden, since some spam
+// bots specifically skip fields hidden that way.
+.honeypot-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  left: -9999px;
+}
+
 // Frosted panel holding the whole form, so the fields read as one surface.
 .contact-form {
   margin-top: 28px;
@@ -129,6 +139,14 @@
 
 .form-status--error {
   color: #f0918f;
+}
+
+.form-status--info {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light-mode .form-status--info {
+  color: rgba(13, 17, 22, 0.6);
 }
 
 label {
