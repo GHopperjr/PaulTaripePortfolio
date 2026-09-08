@@ -82,7 +82,9 @@
 
 .form-actions {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 18px;
 
   button {
     padding: 10px 26px;
@@ -100,6 +102,33 @@
     transform: translateY(-2px);
     box-shadow: 0 12px 26px rgba(80, 0, 202, 0.45);
   }
+
+  button.Mui-disabled {
+    background-color: rgba(80, 0, 202, 0.45);
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: none;
+  }
+}
+
+.form-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.92rem;
+
+  svg {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+}
+
+.form-status--success {
+  color: #6bd68f;
+}
+
+.form-status--error {
+  color: #f0918f;
 }
 
 label {
@@ -185,6 +214,16 @@ form {
 
       .MuiFormControl-root {
         margin-bottom: 18px;
+      }
+    }
+
+    .form-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+
+      button {
+        width: 100%;
       }
     }
   }
